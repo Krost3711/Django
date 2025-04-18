@@ -41,6 +41,22 @@ Digitamos el nombre del usuario y un password de minimo 8 caracteres y volvemos 
 
 A la direccion ip le agregamos un /admin para entrar al administrador de base de datos, he ingresamos con el usuario anteriomente creado.
 
+## Ultimos pasos, ya casi estamos terminando con la configuracion.
+
+Luego ejecutamos el siguiente comando: ```python manage.py starapp base```. Esto creara un directorio nuevo llamado "base" dentro de nuestro proyecto indispensable para la ejecucion del mismo.
+
+Ahora lo que vamos a realizar es la conexion entre el proyecto y la aplicacion. (En este caso 'base', directorio que esta vacio). Esto lo hacemos desde al archivo setting.py, en el directorio proyecto, agregando en el metodo
+INSTALLED_APPS, la siguiente linea de codigo: ```'base.apps.BaseConfig',```. Con esto ya se pueden conocer entre ellos.
+
+## Paso 3: Copiamos los archivos en las carpetas del proyecto.
+
+*Los Archivos de la Carpeta base en la carpeta base de nuestro proyecto.
+
+*Seguidamente los Archivos de la Carpeta proyecto en nuestra carpeta proyecto.
+
+Finalmente ejecutamos el siguiente comando: ```python manage.py makemigrations```. Esto creara una carpeta llamada migrations que contendra la informacion de nuestras tablas para la base de datos.
+
+
 
 
 
