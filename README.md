@@ -56,6 +56,10 @@ INSTALLED_APPS, la siguiente linea de codigo: ```'base.apps.BaseConfig',```. Con
 
 Finalmente ejecutamos el siguiente comando: ```python manage.py makemigrations```. Esto creara una carpeta llamada migrations que contendra la informacion de nuestras tablas para la base de datos.
 
+Culminamos ejecutando el siguiente comando: ```python manage.py migrate```. Y como es de costumbre ejecutamos el comando para refrescar nuestro servidor: ```python manage.py runserver```
+
+De esta forma estariamos listos para ejecutar nuestra aplicacion desde Pycharm he ingresar a la aplicacion desde el navegador y gestionar la creacion de usuarios y creacion de tareas, segun corresponda.
+
 
 
 
