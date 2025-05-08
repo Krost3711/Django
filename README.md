@@ -61,7 +61,7 @@ A la direccion ip le agregamos un /admin para entrar al administrador de base de
 
 Luego ejecutamos el siguiente comando: 
 ```sh
-python manage.py starapp base
+python manage.py startapp base
 ```
 . Esto creara un directorio nuevo llamado "base" dentro de nuestro proyecto indispensable para la ejecucion del mismo.
 
@@ -72,11 +72,31 @@ INSTALLED_APPS, la siguiente linea de codigo:
 ```
 Con esto ya se pueden conocer entre ellos.
 
-## Paso 3: Copiamos los archivos en las carpetas del proyecto.
+## Paso 3: Realizamos un par de ultimas configuraciones.
 
-*Los Archivos de la Carpeta base en la carpeta base de nuestro proyecto.
+*Creamos un nuevo archivo en la carpeta base, llamado urls.py
 
-*Seguidamente los Archivos de la Carpeta proyecto en nuestra carpeta proyecto.
+*Seguidamente importamos desde este ultimo archivo las siguientes librerias.
+
+from django.urls import path
+
+from . import views
+
+*Luego en el archivo views, importamos la siguiente libreria from django.http import HttpResponse
+
+*En el archivo urls de la carpeta proyecto importamos tambien include, esto deberia de quedar asi:
+
+from django.urls import path, include
+
+*Dentro de urlpatterns, debemos agregar path('',include('base.urls')),
+
+## Paso 4: Copiamos los archivos de la carpeta templates que contine las interfaces.
+
+*Para este paso debemos crear una carpeta templates en nuestra carpeta base y ahi copiar los archivos
+
+*Y por ultimo debemos crear las tablas en la base de datos
+
+EN PROCESO
 
 Finalmente ejecutamos el siguiente comando:
 ```sh
