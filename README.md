@@ -90,13 +90,51 @@ from django.urls import path, include
 
 *Dentro de urlpatterns, debemos agregar path('',include('base.urls')),
 
+*En el archivo urls de la carpeta base se debe copiar la siguiente informacion:
+
+```sh
+from .views import ListaPendientes, DetalleTarea, CrearTarea, EditarTarea, EliminarTarea, Logueo, PaginaRegistro
+from django.contrib.auth.views import LogoutView
+
+urlpatterns = [path('', ListaPendientes.as_view(), name='tareas'),
+               path('login/', Logueo.as_view(), name='login'),
+               path('registro/', PaginaRegistro.as_view(), name='registro'),
+               path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
+               path('tarea/<int:pk>', DetalleTarea.as_view(), name='tarea'),
+               path('crear-tarea/', CrearTarea.as_view(), name='crear-tarea'),
+               path('editar-tarea/<int:pk>', EditarTarea.as_view(), name='editar-tarea'),
+               path('eliminar-tarea/<int:pk>', EliminarTarea.as_view(), name='eliminar-tarea')]
+
+
+```
+
+## Debemos omitir los errores, ya que estos seran solucionados con el paso numero 4.
+
 ## Paso 4: Copiamos los archivos de la carpeta templates que contine las interfaces.
 
 *Para este paso debemos crear una carpeta templates en nuestra carpeta base y ahi copiar los archivos
 
 *Y por ultimo debemos crear las tablas en la base de datos
 
-EN PROCESO
+*En el archivo models.py copiamos la siguiente informacion para generar las tablas:
+```sh
+class Tarea(models.Model):
+    usuario = models.ForeignKey(User,
+                                on_delete=models.CASCADE,
+                                null=True,
+                                blank=True)
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField(null=True,
+                                   blank=True)
+    completo = models.BooleanField(default=False)
+    creado = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.titulo
+
+    class Meta:
+        ordering = ['completo']
+```
 
 Finalmente ejecutamos el siguiente comando:
 ```sh
